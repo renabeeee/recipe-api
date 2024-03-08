@@ -4,8 +4,9 @@ class RecipeController < ApplicationController
       @recipe = recipe.new(
       user_id: current_user.id,
       title: params[:title],
+      image: params[:image]
       )
-      # @recipe.image = params[:image_url]
+      @recipe.image = params[:image]
 
     if @recipe.save #happy path
       Rsvp.create(user: current_user, recipe: @recipe)
