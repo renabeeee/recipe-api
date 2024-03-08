@@ -7,6 +7,8 @@ class UsersController < ApplicationController
       email: params[:email],
       profile_image: params[:profile_image],
       password: params[:password],
+      password_confirmation: params[:password_confirmation]
+
     )
       if user.save
         render json: { message: "Welcome, #{user.first_name}!" }
