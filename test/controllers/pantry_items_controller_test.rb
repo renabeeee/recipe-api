@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RecipeControllerTest < ActionDispatch::IntegrationTest
+class PantryItemsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
