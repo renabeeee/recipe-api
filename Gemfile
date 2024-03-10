@@ -61,6 +61,7 @@ group :development do
   gem "jwt"
   gem 'rack-cors'
   gem 'bcrypt', '~> 3.1.7'
+  gem 'seed_dump'
 end
 
 group :test do
