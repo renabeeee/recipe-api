@@ -11,23 +11,21 @@ class IngredientsController < ApplicationController
         else
           render json: { errors: @ingredient.errors.full_messages }, status: :bad_request
         end
-      end
+  end
 
   def update
-       @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
 
-        @ingredient.update(
-          name: params["name"] || @ingredient.name,
-          category: params["category"] || @ingredient.category,
-        )
+      @ingredient.update(
+        name: params["name"] || @ingredient.name,
+        category: params["category"] || @ingredient.category,
+      )
 
-          if @ingredient.save #happy path
-            # render :show
-            render json: { message: "#{@ingredient.name} was added as a #{@ingredient.category}" }
+        if @ingredient.save
+          render json: { message: "#{@ingredient.name} was added as a #{@ingredient.category}" }
 
-          else #sad path
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+        else
+          render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
-      # end
-        end
+  end
 end
