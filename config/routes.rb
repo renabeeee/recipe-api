@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   #ingredients Model
   post "/ingredients" => "ingredients#create"
   patch "/ingredients/:id" => "ingredients#update"
+  delete "/ingredients/:id" => "ingredients#destroy"
 
   #pantry_items Model
   get "/my-pantry" => "pantry_items#index"

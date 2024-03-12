@@ -28,4 +28,10 @@ class IngredientsController < ApplicationController
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
   end
+
+  def destroy
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
+    render json: { message: "The #{@ingredient.name} was deleted." }
+  end
 end
