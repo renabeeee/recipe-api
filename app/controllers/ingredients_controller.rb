@@ -1,23 +1,18 @@
 class IngredientsController < ApplicationController
+
   def create
     @ingredient = Ingredient.new(
         name: params[:name],
+        category: params[:category],
       )
         if @ingredient.save
-          render json: { message: "#{@ingredient.name} was added!" }
+          render json: { message: "#{@ingredient.name} added!" }
         else
           render json: { errors: @ingredient.errors.full_messages }, status: :bad_request
         end
       end
 
   def update
-  # if current_user
-  #   @user = User.find(params[:id])
-
-  #   unless current_user.id == @user.id
-  #     render json: { errors: "Unauthorized to update this user" }, status: :unauthorized
-  #     return
-  #   end
        @ingredient = Ingredient.find(params[:id])
 
         @ingredient.update(
@@ -27,7 +22,7 @@ class IngredientsController < ApplicationController
 
           if @ingredient.save #happy path
             # render :show
-            render json: { message: "#{@ingredient.name} was add as a #{@ingredient.category}" }
+            render json: { message: "#{@ingredient.name} was added as a #{@ingredient.category}" }
 
           else #sad path
             render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
