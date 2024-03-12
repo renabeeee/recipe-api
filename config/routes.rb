@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
-  post "/recipes" => "recipes#create"
+
+  #users Model
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"
+
+  #ingredients Model
   post "/ingredients" => "ingredients#create"
   patch "/ingredients/:id" => "ingredients#update"
-  get "/full-pantry" => "pantry_items#index"
-  post "/sessions" => "sessions#create"
+
+  #pantry_items Model
+  get "/my-pantry" => "pantry_items#index"
   post "/add-to-pantry" => "pantry_items#create"
   delete "/remove-from-pantry" => "pantry_items#destroy"
+
+  #sessions Model
+  post "/sessions" => "sessions#create"
+
+  #recipes Model
+  post "/recipes" => "recipes#create"
+
 end
