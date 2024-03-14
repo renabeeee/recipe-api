@@ -3,11 +3,12 @@ class UsersController < ApplicationController
     user = User.new(
       first_name: params[:first_name],
       email: params[:email],
-      profile_image: params[:profile_image],
+      # profile_image: params[:profile_image],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
       if user.save
+        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
         render json: { message: "Welcome, #{user.first_name}!" }
       else
         render json: { errors: user.errors.full_messages }, status: :bad_request
