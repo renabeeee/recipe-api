@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def username
+    @users = current_user.first_name
+    render json: { first_name: @users }
+  end
 
   def create
     user = User.new(
@@ -15,13 +19,12 @@ class UsersController < ApplicationController
       password_confirmation: params[:password_confirmation]
     )
       if user.save
-        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
-        render json: { message: "Welcome, #{user.first_name}!" }
+        redirect_to 'http://localhost:5173/my-pantry' and return
+
       else
         render json: { errors: user.errors.full_messages }, status: :bad_request
       end
 end
-
 
 def update
   # if current_user

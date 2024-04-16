@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/users" => "users#index"
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"
+  get "/users/username" => "users#username"
+
 
   #ingredients Model
   post "/ingredients" => "ingredients#create"
@@ -20,5 +22,4 @@ Rails.application.routes.draw do
 
   #recipes Model
   post "/recipes" => "recipes#create"
-
 end
