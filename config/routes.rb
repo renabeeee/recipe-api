@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"
   get "/users/username" => "users#username"
+  get "/users/profile_image" => "users#profile_image"
 
 
   #ingredients Model

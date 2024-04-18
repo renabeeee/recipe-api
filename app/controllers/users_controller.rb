@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     render json: { first_name: @users }
   end
 
+  def profile_image
+    @users = current_user.profile_image
+    render json: { profile_image: @users }
+  end
+
   def create
     user = User.new(
       first_name: params[:first_name],
