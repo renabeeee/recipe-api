@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update"
   get "/users/username" => "users#username"
   get "/users/profile_image" => "users#profile_image"
-
+  delete "/users/:id" => "users#destroy"
 
   #ingredients Model
   post "/ingredients" => "ingredients#create"

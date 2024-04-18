@@ -29,9 +29,9 @@ class UsersController < ApplicationController
       else
         render json: { errors: user.errors.full_messages }, status: :bad_request
       end
-end
+  end
 
-def update
+  def update
   # if current_user
   #   @user = User.find(params[:id])
 
@@ -39,20 +39,25 @@ def update
   #     render json: { errors: "Unauthorized to update this user" }, status: :unauthorized
   #     return
   #   end
-  @user = User.find(params[:id])
+    @user = User.find(params[:id])
 
-  @user.update(
-    first_name: params["first_name"] || @user.first_name,
-    profile_image: params["profile_image"] || @user.profile_image,
-  )
+    @user.update(
+      first_name: params["first_name"] || @user.first_name,
+      profile_image: params["profile_image"] || @user.profile_image,
+    )
 
-    if @user.save #happy path
-      # render :show
-      render json: { message: "Your info is updated, #{@user.first_name}!" }
+      if @user.save #happy path
+        # render :show
+        render json: { message: "Your info is updated, #{@user.first_name}!" }
 
-    else #sad path
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      else #sad path
+        render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-# end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    render json: { message: "User has been deleted" }
   end
 end
