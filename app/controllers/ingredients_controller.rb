@@ -1,6 +1,11 @@
 class IngredientsController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
 
+  def index
+    @ingredients = Ingredient.all
+    render :index
+  end
+
   def create
     @ingredient = Ingredient.new(
         name: params[:name],

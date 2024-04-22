@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   delete "/users/:id" => "users#destroy"
 
   #ingredients Model
-  post "/ingredients" => "ingredients#create"
+  get "/ingredients" => "ingredients#index"
   patch "/ingredients/:id" => "ingredients#update"
   delete "/ingredients/:id" => "ingredients#destroy"
+  post "/ingredients" => "ingredients#create"
+
 
   #pantry_items Model
   get "/my-pantry" => "pantry_items#index"
