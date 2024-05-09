@@ -1,10 +1,10 @@
-# class PantryItemsController < ApplicationController
-#   # before_action :authenticate_user
+class PantryItemsController < ApplicationController
+  before_action :authenticate_user
 
-#   def index
-#     @pantry_items = current_user.pantry_items
-#     render :index
-#    end
+  def index
+    @pantry_items = current_user.pantry_items
+    render :index
+   end
 
 #    def create
 #     @ingredient = Ingredient.find(params[:ingredient_id])
@@ -30,4 +30,4 @@
 #       render json: { error: "You are not authorized to delete this item." }, status: :unauthorized
 #     end
 #   end
-# end
+end
